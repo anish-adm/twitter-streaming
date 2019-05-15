@@ -15,7 +15,7 @@
    2. Replace them in `res/values/strings.xml` with `YOUR_TWITTER_API_KEY`, `YOUR_TWITTER_API_SECRET`, `YOUR_TWITTER_ACCESS_TOKEN` and `YOUR_TWITTER_ACCESS_TOKEN_SECRET` respectively
 2. Change Google Map credentials
     1. Generate Google Map API Key for android from [Google API Console](https://console.developers.google.com/apis/dashboard)
-    2. Replace it with `YOUR_GOOGLE_API_KEY`
+    2. Replace `YOUR_GOOGLE_API_KEY` with your API Key in AndroidManifest.xml file.
 3. That's It!
 
 ## ToDos
