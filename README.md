@@ -1,4 +1,4 @@
-# Simple Android app for showing latest Tweets around user's location on Google Map
+# Simple Android app for showing realtime Tweets around user's location on Google Map
 
 ## Highlights
 
@@ -11,11 +11,11 @@
 
 ## Setup instructions
 1. Change Twitter credentials
-    1.1 Generate Twitter API key, API Secret, Access Token and Access Token secret from [HERE](https://developer.twitter.com/en/apps)
-    1.2 Replace them in `res/values/strings.xml` with `YOUR_TWITTER_API_KEY`, `YOUR_TWITTER_API_SECRET`, `YOUR_TWITTER_ACCESS_TOKEN` and `YOUR_TWITTER_ACCESS_TOKEN_SECRET` respectively
+   1. Generate Twitter API key, API Secret, Access Token and Access Token secret from [HERE](https://developer.twitter.com/en/apps)
+   2. Replace them in `res/values/strings.xml` with `YOUR_TWITTER_API_KEY`, `YOUR_TWITTER_API_SECRET`, `YOUR_TWITTER_ACCESS_TOKEN` and `YOUR_TWITTER_ACCESS_TOKEN_SECRET` respectively
 2. Change Google Map credentials
-    2.1 Generate Google Map API Key for android from [Google API Console](https://console.developers.google.com/apis/dashboard)
-    2.2 Replace it with `YOUR_GOOGLE_API_KEY`
+    1. Generate Google Map API Key for android from [Google API Console](https://console.developers.google.com/apis/dashboard)
+    2. Replace it with `YOUR_GOOGLE_API_KEY`
 3. That's It!
 
 ## ToDos
