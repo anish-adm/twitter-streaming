@@ -110,8 +110,10 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
             @Override
             public boolean onQueryTextSubmit(String query) {
                 searchTerm = query.trim();
-                tweetsViewModel.stopStreaming();
-                listLiveData = tweetsViewModel.startStreaming(getApplicationContext(), lastKnownLocation, searchTerm, radius);
+                if (ActivityCompat.checkSelfPermission(MainActivity.this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(MainActivity.this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+                    tweetsViewModel.stopStreaming();
+                    listLiveData = tweetsViewModel.startStreaming(getApplicationContext(), lastKnownLocation, searchTerm, radius);
+                }
                 return false;
             }
 
@@ -179,6 +181,10 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                         && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     // permission was granted, yay!
                     lastKnownLocation = locationManager.getLastKnownLocation(locationProvider);
+                    tweetsViewModel = ViewModelProviders.of(this).get(TweetsViewModel.class);
+                    listLiveData = tweetsViewModel.startStreaming(getApplicationContext(), lastKnownLocation, searchTerm, radius);
+                    startObserving();
+                    updateLocationUI();
                 } else {
                     // permission denied, boo!
                     Snackbar snackbar = Snackbar
@@ -271,10 +277,13 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
-                radius = Long.parseLong(input.getText().toString());
-                radiusTV.setText(" "+radius+" KM");
-                tweetsViewModel.stopStreaming();
-                listLiveData = tweetsViewModel.startStreaming(getApplicationContext(), lastKnownLocation, searchTerm, radius);
+                if (ActivityCompat.checkSelfPermission(MainActivity.this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(MainActivity.this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+                    radius = Long.parseLong(input.getText().toString());
+                    radiusTV.setText(" "+radius+" KM");
+                    tweetsViewModel.stopStreaming();
+                    listLiveData = tweetsViewModel.startStreaming(getApplicationContext(), lastKnownLocation, searchTerm, radius);
+                }
+
             }
         });
         builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
